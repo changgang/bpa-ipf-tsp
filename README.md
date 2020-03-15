@@ -29,7 +29,7 @@ This project uses [CMake](http://www.cmake.org). CMake is a multi-platform build
     $ make
     $ sudo make install
     
-After building, you will see the library binaries in `lib/` and the executables in `bin/`.  
+After building, you will see the library binaries in `lib/` and the executables in `bin/`. To build with debug symbols, do `cmake -DCMAKE_BUILD_TYPE=Debug ..`
 
 ## Sample Cases
 There are a variety of sample cases in the [data](https://github.com/mbheinen/bpa-ipf-tsp/tree/master/data) directory of this repo. Some of them came from original IPF codebase others came from publically available cases like Texas A&M's set of synthetic cases found [here](https://electricgrids.engr.tamu.edu/electric-grid-test-cases/). None of the data is from real power system networks since such information is generally considered confidential by Transmission System Operators.

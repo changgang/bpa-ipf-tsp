@@ -1,4 +1,6 @@
 bin
 build
 lib
-
+data/*.bse
+xwindow/gui.uid
+xwindow/em_log
