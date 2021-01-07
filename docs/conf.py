@@ -25,7 +25,7 @@ subprocess.call('doxygen', shell=True)
 # -- Project information -----------------------------------------------------
 
 project = 'Interactive Power Flow'
-copyright = '2020, Interactive Power Flow Developers'
+copyright = '2021, Interactive Power Flow Developers'
 author = 'IPF Developers'
 
 numfig = True

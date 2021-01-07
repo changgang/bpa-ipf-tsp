@@ -514,7 +514,182 @@ To solve a base case:
 
   1. Make sure that you have previously loaded a base case or netdata file. See :ref:`opening-files` if you have not.
   2. Choose Solve Case from the Process menu in the IPF main window. The Solve dialog box opens and you are presented with a number of options. See the figure below. Note that default values are set for you. If these suit your case, click the Solve button. If the defaults are not appropriate for your case, change them. Then solve the case. See Chapter 4 for a discussion of the options.
+
 The solution may take anywhere from a few seconds to minutes depending on the number of buses in the base case. After the solution is complete, the display shows some of the calculated data.
+
+Near each bus icon are two numbers. The one on the left is the calculated voltage for the bus in kV; the one on the right is the voltage angle in degrees. Two other numbers also appear. These are the branch real and reactive power. The one on the left of the slash is the real power in MWs, and the one on the right is the reactive power in MVARs. Note also that the direction of positive power flow is shown by an arrow in the middle of the branch.
+
+.. figure:: ../img/Solve_Dialog_Box.png
+
+  Solve Dialog Box
+
+Editing Coordinate Data
+=======================
+A coordinate file specifies where to place buses and branch bending points on the display and on a hard copy plot. Thus, when you edit coordinate data, it is important to keep in mind that you are not affecting the base case in any way. But, of course, for the base case file and the coordinate file to work together, they must have bus identification data - the bus name and base kV - and bus connectivity and branch specification between buses "in synch." If bus names are not the same between the files and if the bus connectivity and branch specification does not match up, then errors may arise. The application helps find some of these errors, but cannot protect you from all possible errors.
+
+Note that when you edit coordinate data on the display, it does not affect the coordinate file that you loaded. If you want to save your changes, you must save the coordinate file using the Save File dialog. You can edit certain coordinate file values through the Bus Coordinate Edit dialog box. Be sure to read through the description of this at the end of this section.
+
+Moving a Bus
+------------
+Each bus in the coordinate file is represented on the display by a bus icon. Bus icons also have associated bus names. When you move a bus icon, the icon and the bus name both move, along with the connected lines representing network branches. Bus icons are usually moved to make the diagram more readable or more pleasing to look at.
+
+To move a bus:
+
+ 1. Click the Coord button in the main window toolbox. This action displays the loaded coordinate data, including that for buses which do not appear in the base case. If there is no display, you need to load a coordinate file. See Opening Files.
+ 2. Click the Move button in the main window toolbox.
+ 3. Move the cursor over into the display area of the main window. You will notice that the cursor changes shape. This shape always means you are in Move mode.
+ 4. Find a bus icon you want to move and put the cursor directly over the icon, covering it.
+ 5. Press the mouse button, hold it, and move the cursor to a new location. You will see that an outline of the bus icon and name appears and moves with the cursor to the new location. The attached branches also move in outline along with the bus.
+ 6. Release the mouse button. The bus and name are now in the new location, and branches are properly moved along with the bus.
+
+.. figure:: ../img/Moving_a_Bus.png
+
+  Moving a Bus
+
+Moving a Group of Buses
+-----------------------
+You can do a group move of buses. The group move is no different in result from moving each bus by itself. The only difference is that all buses are moved at the same time and, perhaps more important, all buses in the group maintain their relative distances from each other. (Mathematically, the buses are "translated" from one place to another as a unit.)
+
+.. figure:: ../img/After_a_Group_Selection_of_Buses.png
+
+  After a Group Selection of Buses
+
+To group move some buses:
+
+  1. Click the Coord button in the main window toolbox. This action displays the loaded coordinate data. If there is no display, you need to load a coordinate file. See Opening Files.
+  2. Click the Group Move button in the main window toolbox.
+  3. Move the cursor over into the display area of the main window. You will notice that the cursor changes shape. This shape always means you are in Group Move mode.
+  4. Find a group of buses you would like to move. Move the cursor to the upper left of the farthest up and to the left of all the buses. Press and hold the left mouse button and drag the cursor to the lower right. You will see a selection box form as you move to the lower right. Make sure that all of your intended buses are clearly within this selection box. Release the mouse button.
+  5. In the area where you first pressed the mouse button, you will see a name appear, such as GROUP 0001. This name becomes the "handle" by which you grab the group and move it. If you do further group moving, the group names increment and become GROUP 0002, GROUP 0003, etc.
+  6. Move the cursor over the name GROUP 0001. Press and drag to a new location, then release. The selected group of buses is now moved all together to the new location.
+
+Moving a Bus Name
+-----------------
+The bus name accompanying a bus icon "knows" where its associated icon is. Thus, when you move a bus icon, the associated bus name always moves with the icon and keeps its position relative to the bus icon. However, in addition to moving a bus icon, you can move a bus name independently of its associated icon. This helps you make the network diagram more readable if names, icons, or branches happen to overlie one another.
+
+To move a bus name:
+
+  1. Click the Coord button in the main window toolbox. This action displays the loaded coordinate data. If there is no display, you need to load a coordinate file. See Opening Files.
+  2. Click the Move button in the main window toolbox.
+  3. Move the cursor over into the display area of the main window. You will notice that the cursor changes shape. This shape always means you are in Move mode.
+  4. Find a bus name you want to move and put the cursor directly over the name, covering it.
+  5. Press the left mouse button, hold it, and move the cursor to a new location. You will see that an outline box of the bus name forms and moves with the cursor to the new location. Just the outline box moves. The bus icon and branches stay put.
+  6. Release the left mouse button. The bus name is now in the new location.
+
+.. figure:: ../img/Moving_a_Bus_Name.png
+
+  Moving a Bus Name
+
+Deleting a Bus Name
+-------------------
+The coordinate file has bus position data and possibly line bending points. So, when you delete a bus from the display, you remove the bus coordinates from the coordinate file and you delete any line bending points in any of the branches connected to the deleted bus. This does not delete anything from the base case, if you have one loaded. It only removes the bus from the display.
+
+To delete a bus:
+
+  1. Click the Coord button in the main window toolbox. This action displays the loaded coordinate data. If there is no display, you need to load a coordinate file. See Opening Files.
+  2. Click the Delete button in the main window toolbox.
+  3. Move the cursor over into the display area of the main window. You will notice that the cursor changes shape. This shape always means you are in Delete mode.
+  4. Find a bus you want to delete and put the cursor directly over the bus icon.
+  5. Click the left mouse button. You will see that both the bus icon and any connected branches disappear from the display.
+
+.. figure:: ../img/Deleting_a_Bus.png
+
+  Deleting a Bus
+
+Adding and Moving a Branch Bending Point
+----------------------------------------
+Bending points in branches allow you to arrange a network diagram in a neater or more pleasing way than without bending points. With bending points, you can avoid branches that intersect bus icons, bus names, other branches, etc.
+
+Bending point coordinates are stored only in the coordinate file. They are not stored or referred to in the base case file. You can have up to four bending points in a branch. However, if a branch is very short on the display, the limitations of the graphics algorithms may not allow you to add all four bending points. On the other hand, you can put in as many bending points as the displayed branch will take, though only the first four will be recorded in the coordinate file data for hardcopy plotting.
+
+To add a branch bending point:
+
+  1. Click the Coord button in the main window toolbox. This action displays the loaded coordinate data. If there is no display, you need to load a coordinate file. See Opening Files.
+  2. Click the New Bending Point button in the main window toolbox.
+  3. Move the cursor over into the display area of the main window. You will notice that the cursor changes shape. This shape always means you are in Bending Point mode.
+  4. Find a point along any branch and press the left mouse button. A small outline box appears next to the cursor.
+  5. Move the cursor to a point that creates a suitable bend in the branch. Release the button. Note that it is quite possible to have one or more bending points along a branch with no on-screen physical bends in the branch. Because of this, there may be hidden bending points in a branch. If you suspect hidden bending points, you can find them by moving one of the bus icons.
+
+To move a branch bending point:
+
+This is the same except you want to click on an existing bend.
+
+.. note::
+
+  You must place the cursor over the Bending Point Hot Spot Box to select a bending point. Note that the upper left hand corner of the Box is attached to the actual bending point. The point of the blue cursor arrow indicates this corner. If the point is above or to the left of the bending point, you may very well miss selecting it.
+
+.. figure:: ../img/Adding_and_Moving_a_Branch_Bending_Point.png
+
+  Adding and Moving a Branch Bending Point
+
+Deleting a Branch Bending Point
+-------------------------------
+Deleting a bending point means to remove the bending point from the display and to also remove it from the coordinate data if it was a stored bending point.
+
+To delete a branch bending point:
+
+  1. Click the Coord button in the main window toolbox. This action displays the loaded coordinate data. If there is no display, you need to load a coordinate file. See Opening Files.
+  2. Click the Delete button in the main window toolbox. Move the cursor over into the display area of the main window. You will notice that the cursor changes shape. This shape always means you are in Delete mode.
+  3. Find the point in a branch where there is a bend. Move the cursor right over the bending point or to the lower left of the bending point. Click the left mouse button. The bend in the branch disappears and the branch straightens out. 
+
+.. note:: 
+
+  Branches may have hidden bending points that are actually there but do not show because of the placement of the buses at either end of a branch. To find hidden branch bending points, while in Move mode, select and move a bus icon. This should reveal hidden bending points.
+
+Bus Coordinate Edit Dialog Box (Incomplete)
+-------------------------------------------
+You can edit certain coordinate file values via the Bus Coordinate Edit dialog box. If you want to change the position of a bus on a plot, for example, or create a special plot-only name for a bus, you can do so through the Bus Coordinate Edit dialog box.
+
+.. note:: 
+
+  This dialog box changes values only for a coordinate file that is then plotted as a paper hard copy. The values do not change on the display itself.
+
+.. figure:: ../img/Bus_Coordinate_Edit_Dialog_Box.png
+
+  Bus Coordinate Edit Dialog Box
+
+To edit with the Bus Coordinate dialog box:
+
+  1. Click the Coord button in the main window toolbox. This action displays the loaded coordinate data. If there is no display, you need to load a coordinate file. See Opening Files.
+  2. Click the Bus Coordinate Edit button in the main window toolbox.
+  3. Move the cursor over into the display area of the main window. You will notice that the cursor changes shape. This shape always means you are in Bus Coordinate Edit mode.
+  4. Click any bus. The Bus Coordinate Edit dialog box opens. Note the text boxes for Bus Name, kV, Plot Name, Bus X and Y Position, Generator and Reactance Angle, Name X and Y Position. You can fill in or change any of these values except for Bus Name and kV
+  5. Move the cursor over the Bus Name text box. Try to change the name. You cannot. The same is true of the kV. These two values are the base case identifiers of the bus you have chosen. You cannot change these because they are base case and not coordinate file values.
+  6. Type a plot name in the Plot Name box. Note that this works. You can type any name you like. Type bus x and y position values. Remember that the x,y values are with respect to the lower left-hand corner of the plot as are the x,y values for the name. The generator and reactance angles are 360 degrees centered on the bus position with 0 degrees being on the right of the bus position. For example, 180 degrees would put the generator symbol on the left-hand side of the bus symbol. 
+  7. Click the radio buttons to show or hide the bus itself or the bus name.
+  8. Pop up the Voltage Location menu to put the voltage value in one of the following positions: Above Name, Right of Name, Below Name, or Left of Name. Do Not Print Voltage and Print Voltage Without Name are also possibilities on this menu.
+  9. Click Apply if you want to see the values on a new plot. Click Reset to delete all the values you just entered. Close closes the dialog box without making any changes to the values.
+  10. Print a new plot with the new values for the selected bus by going to the main window menus and selecting Print Plot on the File menu. (If you want to see the effect of your changes, you will have to compare it to a previously printed plot.)
+
+Getting Reports
+===============
+Reports allow you to get a concise look at IPF data - input, output, solution, and calculated. These reports involve bus input data, overloaded lines and transformers, lines that are overvoltage or undervoltage, line comparisons, area interchanges, tie lines, etc.
+
+Additional reports can be obtained from IPF by writing programs that use the IPF CFLOW library. See :ref:`libcflow-c-library` for instructions on how to write these programs.
+
+Batch-style reports can be obtained by saving a new base case file form IPF and then running the batch program, `bpf`. See :ref:`bpf` for instructions.
+
+.. figure:: ../img/Reports_Dialog_Box
+
+  Reports Dialog Box
+
+To get a report:
+
+  1. Most reports require you to have a solved case in residence. If you have only loaded a network file and have not yet run a solution, then there is no output solution data in residence for you to get a report on.
+  2. Click the View main window menu and select Reports. The Reports dialog box appears.
+  3. Scroll down the list to see what reports are available. Choose one by clicking it.
+  4. Click the View Report button. A report appears in a separate, scrolling list window. Note that there are heading labels at the top to help you interpret the data. Use the scroll bar to find data of interest.
+  5. If you would like to save the report in a file, click the Save Report button. If you do not specify a file name in the File Report Name text box, the output will be saved in a file names REPORTS.DAT. To append to an existing report file, type the name in the text box and click on the Append Report button.
+  6. For reports that consist of a large amount of data, you may want to trim the amount to a more manageable size. The filters in the center of the box help you do this. Here's an example. To select overloaded lines owned by BPA in zone 03 at a nominal 230 kV, you would first select Overloaded Line. Then, select filters 03, BPA, and 230. These selections are effectively "anded" together. This limits the report to bus records with just those attributes.
+
+Printing a Network Diagram
+==========================
+Besides printing a report, you can get a permanent copy of IPF data by printing a network diagram. A coordinate file provides position data for buses (and sometimes branch bending point data) to which you can add various kinds of base case data to create a hard copy map (network diagram) of a base case study. The Print Plot command on the File menu prints the current, memory-resident base case and coordinate data, using the settings specified in the Plot Options command. See the Plot Options entry in the Concepts and Commands section for how to specify the printing device and many other printing options. See also Appendix B for more information about how network diagrams are created.
+
+To print a network diagram:
+
+  1. Click the File menu in the main window and select Print Plot. This sends the currently resident data off to the printing device that you have previously specified either as a default in your XGUI file, or by selection on the Plot Options menu.
+
 
 .. _bus-and-branch-editing:
 
